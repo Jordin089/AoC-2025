@@ -7,13 +7,11 @@ procedure day1 is
     Current_Location      : Integer := 50;
     Location_Change       : Integer;
     Zero_Count            : Integer := 0;
-    Test_Number           : Integer := (-1) mod 100;
 
     function Get_Input_Line (File : File_Type) return String is
     begin
         return Get_Line (File);
     end Get_Input_Line;
-    
     function Get_Input_Number (Line : String) return Integer is
         First_Number_Index    : Integer := Line'first + 1;
         Final_Number_Index    : Integer := Line'last;
@@ -21,7 +19,6 @@ procedure day1 is
         return Integer'Value (Line(First_Number_Index .. Final_Number_Index));
     end;
 begin
-    Put_Line (Test_Number'Image);
     Open (File, In_File, File_Name);
     while not End_Of_File (File) loop
         Declare
