@@ -6,4 +6,6 @@ the link for said wheel is [here](https://wheeldecide.com/?c1=Common%20lisp&c2=F
 Language Chosen: ```Ada``` <br>
 Time Taken: ```~3 Hours``` <br>
 
-
+### Day 2
+Language Chosen: ```Rust``` <br>
+Time Taken: ```~1.5 Hours```
