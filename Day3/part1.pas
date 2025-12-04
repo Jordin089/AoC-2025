@@ -1,5 +1,6 @@
 program part1;
 
+uses sysutils;
 type
    value = record
               value : integer;
@@ -14,38 +15,41 @@ var
    first_value   : value;
    second_value : value;
 
-function max_on_range(line : string; starting_index : integer; final_index : integer;): integer;
+function max_on_range(line : string; starting_index : integer; final_index : integer): value;
 var
-   current_highest : value;
-   i               : integer;
-   character       : string;
-   value           : integer;
+   result    : value;
+   i         : integer;
+   character : string;
+   value     : integer;
 begin
-   current_highest.value := 0;
-   current_highest.index := 0;
+   result.value := 0;
+   result.index := 0;
    for i:= starting_index to final_index do
       begin
          character := line[i];
          value := StrToInt(character);
-         if (value > current_highest.value) then
+         if (value > result.value) then
             begin
-               current_highest.value := value;
-               current_highest.index ;= i;
+               result.value := value;
+               result.index := i;
             end;
       end;
+   max_on_range := result;
 end;
          
-         
-end;
 begin
    total := 0;
    Assign(input_file, filename);
    Reset(input_file);
    repeat
-      ReadLn(input_file, line);
-      WriteLn('length: ', length(line));
-      WriteLn(line);
-      
+      begin
+         ReadLn(input_file, line);
+         first_value := max_on_range(line, 1, length(line) - 1);
+         second_value := max_on_range(line, first_value.index + 1, length(line));
+         WriteLn('value for this line: ', first_value.value*10 + second_value.value);
+         total := total + (first_value.value*10) + second_value.value;
+      end;
    until eof(input_file);
    Close(input_file);
+   WriteLn('total Value: ', total)
 end.
